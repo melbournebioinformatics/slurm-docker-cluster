@@ -1,0 +1,9 @@
+ARG SLURM_VERSION=25.05.3
+FROM slurm-docker-cluster:${SLURM_VERSION}
+
+# Install Python system-wide (RHEL-like base)
+RUN dnf -y install python3 python3-pip && \
+    python3 -m pip install --no-cache-dir --upgrade pip && \
+    python3 -m pip install --no-cache-dir pokemon && \
+    dnf -y clean all && \
+    rm -rf /var/cache/dnf
