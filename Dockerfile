@@ -126,6 +126,11 @@ RUN set -ex \
     && alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1 \
     && alternatives --set python3 /usr/bin/python3.12
 
+# Custom
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    pip3 install pokemon
+
 # Install gosu for privilege dropping
 ARG GOSU_VERSION=1.19
 # Official SHA256 checksums from https://github.com/tianon/gosu/releases/download/1.19/SHA256SUMS
